@@ -1,0 +1,6 @@
+github.com/eberle1080/go-rich v0.0.0-20260319041043-b9feb986b36a h1:p+glZo4Pf0JG8fUUUNbmH/phyhXNFgQJk8fcmNOWrZw=
+github.com/eberle1080/go-rich v0.0.0-20260319041043-b9feb986b36a/go.mod h1:XN8Arp8hi/JnjsyXrxkPiBwm2MGGJwuLxr0q9Xjrx7k=
+golang.org/x/sys v0.40.0 h1:DBZZqJ2Rkml6QMQsZywtnjnnGvHza6BTfYFWY9kjEWQ=
+golang.org/x/sys v0.40.0/go.mod h1:OgkHotnGiDImocRcuBABYBEXf8A9a87e/uXjp9XT3ks=
+golang.org/x/term v0.39.0 h1:RclSuaJf32jOqZz74CkPA9qFuVTX7vhLlpfj/IGWlqY=
+golang.org/x/term v0.39.0/go.mod h1:yxzUCTP/U+FzoxfdKmLaA0RV1WgE0VY7hXBwKtY/4ww=
