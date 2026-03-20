@@ -25,11 +25,12 @@ import (
 
 type CalcScreen struct {
 	screen.BaseScreen
-	display string // current input/result shown on screen
-	left    float64
-	op      string
-	hasLeft bool
-	error   bool
+	display   string // current input/result shown on screen
+	left      float64
+	op        string
+	hasLeft   bool
+	error     bool
+	lastWidth int // width from last Render, used for mouse hit-testing
 }
 
 func NewCalcScreen() *CalcScreen {
@@ -81,6 +82,31 @@ func (s *CalcScreen) evaluate() {
 
 func (s *CalcScreen) Update(_ context.Context, m msg.Msg) msg.Cmd {
 	switch v := m.(type) {
+	case msg.MouseDownMsg:
+		if s.lastWidth == 0 {
+			return nil
+		}
+		// Button grid starts at row 3 (title, display, separator occupy rows 0-2).
+		// Each row of 4 buttons renders as "[ X ]  [ X ]  [ X ]  [ X ]" = 26 chars, centered.
+		const gridWidth = 26
+		buttonRow := int(v.Y) - 3
+		if buttonRow < 0 || buttonRow > 3 {
+			return nil
+		}
+		leftPad := (s.lastWidth - gridWidth) / 2
+		relX := int(v.X) - leftPad
+		if relX < 0 || relX >= gridWidth {
+			return nil
+		}
+		buttonCol := (relX * 4) / gridWidth
+		grid := [4][4]string{
+			{"7", "8", "9", "/"},
+			{"4", "5", "6", "*"},
+			{"1", "2", "3", "-"},
+			{"0", ".", "=", "+"},
+		}
+		key := grid[buttonRow][buttonCol]
+		return func(_ context.Context) msg.Msg { return msg.KeyMsg{Key: key} }
 	case msg.KeyMsg:
 		switch v.Key {
 		case "q", "Q", keys.Escape, "ctrl+c":
@@ -139,6 +165,7 @@ func (s *CalcScreen) Update(_ context.Context, m msg.Msg) msg.Cmd {
 }
 
 func (s *CalcScreen) Render(region geometry.Region) []strip.Strip {
+	s.lastWidth = region.Width
 	strips := make([]strip.Strip, region.Height)
 	if region.Height == 0 {
 		return strips

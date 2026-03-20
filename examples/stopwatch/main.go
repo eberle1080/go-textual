@@ -49,7 +49,7 @@ func (s *StopwatchScreen) Update(_ context.Context, m msg.Msg) msg.Cmd {
 		return msg.Tick(tickInterval)
 	case msg.KeyMsg:
 		switch v.Key {
-		case " ":
+		case keys.Space:
 			s.running = !s.running
 			s.MarkDirty()
 		case "r", "R":

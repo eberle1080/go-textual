@@ -80,7 +80,7 @@ func (d *UnixDriver) SetCursorOrigin(x, y int) { d.base.SetCursorOrigin(x, y) }
 func (d *UnixDriver) ClearCursorOrigin()        { d.base.ClearCursorOrigin() }
 
 func (d *UnixDriver) getTerminalSize() (int, int) {
-	w, h, err := term.GetSize(int(os.Stderr.Fd()))
+	w, h, err := term.GetSize(d.fileno)
 	if err != nil {
 		w, h = 80, 24
 	}
@@ -126,6 +126,10 @@ func (d *UnixDriver) StopApplicationMode() {
 		d.attrsBefore = nil
 	}
 
+	if d.inBandResize {
+		d.Write(disableInBandResize)
+		d.inBandResize = false
+	}
 	d.Write(kittyDisable)
 	d.Write(altScreenExit)
 	d.Write(showCursor)

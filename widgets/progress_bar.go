@@ -83,8 +83,8 @@ func (p *ProgressBar) Render(region geometry.Region) []strip.Strip {
 	}
 
 	filled := int(float64(barWidth) * pct)
-	if filled > barWidth {
-		filled = barWidth
+	if filled > barWidth-2 {
+		filled = barWidth - 2
 	}
 
 	bar := "[" + strings.Repeat("#", filled) + strings.Repeat("-", barWidth-filled-2) + "]"

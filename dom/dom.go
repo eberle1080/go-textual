@@ -112,7 +112,12 @@ func (d *DOMNode) CSSPathNodes() []css.SelectorNode {
 }
 
 func (d *DOMNode) Parent() Node      { return d.parent }
-func (d *DOMNode) Children() *NodeList { return d.nodes }
+func (d *DOMNode) Children() *NodeList {
+	if d.nodes == nil {
+		d.nodes = NewNodeList()
+	}
+	return d.nodes
+}
 
 func (d *DOMNode) Styles() *css.RenderStyles { return d.renderStyles }
 func (d *DOMNode) CSSStyles() *css.Styles    { return d.cssStyles }

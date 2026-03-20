@@ -95,8 +95,8 @@ func (a *App) Run(ctx context.Context, s screen.Screen, opts ...RunOption) error
 	}
 
 	a.drv.StartApplicationMode()
-	defer a.drv.StopApplicationMode()
 	defer a.drv.Close()
+	defer a.drv.StopApplicationMode()
 
 	// Start signal handler goroutine.
 	go a.runSignalHandler(a.ctx)
