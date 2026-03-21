@@ -2,6 +2,7 @@ package widgets
 
 import (
 	"context"
+	"strings"
 
 	rich "github.com/eberle1080/go-rich"
 
@@ -44,9 +45,13 @@ func (r *RichLog) Write(line string) {
 	r.WriteStyled(line, rich.NewStyle())
 }
 
-// WriteStyled appends a styled line.
+// WriteStyled appends a styled line. If line contains newlines, each
+// sub-line is appended as a separate log entry so they render correctly.
 func (r *RichLog) WriteStyled(line string, style rich.Style) {
-	r.lines = append(r.lines, logLine{text: line, style: style})
+	line = strings.ReplaceAll(line, "\r\n", "\n")
+	for _, l := range strings.Split(line, "\n") {
+		r.lines = append(r.lines, logLine{text: l, style: style})
+	}
 	if len(r.lines) > r.maxLines {
 		r.lines = r.lines[len(r.lines)-r.maxLines:]
 	}

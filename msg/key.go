@@ -20,11 +20,14 @@ type KeyMsg struct {
 }
 
 // NewKey constructs a KeyMsg. When character is nil and key is a single Unicode
-// code point, Character is set to that code point.
+// code point, Character is set to that code point. For named keys like "space"
+// or "full_stop", KeyToCharacter is used as a fallback.
 func NewKey(key string, character *string) KeyMsg {
 	if character == nil {
 		if runes := []rune(key); len(runes) == 1 {
 			ch := string(runes[0])
+			character = &ch
+		} else if ch, ok := keys.KeyToCharacter(key); ok {
 			character = &ch
 		}
 	}
