@@ -1,0 +1,6 @@
+version: "1.0.0"
+module: go_textual
+remote: origin
+branch: main
+visibility: public
+merge_strategy: direct   # will become "pr" in the future
