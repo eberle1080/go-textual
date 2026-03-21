@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"unicode"
 	"unicode/utf8"
 
 	"github.com/eberle1080/go-textual/internal/ansi"
@@ -313,6 +314,16 @@ func (p *Parser) parseExtKey(numStr, modStr, finalChar string) []msg.Msg {
 		keyName = k
 	} else if k, ok := ansi.FunctionalKeys[finalChar]; ok {
 		keyName = k
+	} else if finalChar == "u" && numStr != "" {
+		// Kitty protocol: codepoint-based key (e.g. \x1b[99;5u = ctrl+c).
+		// FunctionalKeys only covers special keys; derive printable keys from
+		// the Unicode codepoint directly.
+		if cp, err := strconv.Atoi(numStr); err == nil {
+			r := rune(cp)
+			if unicode.IsPrint(r) {
+				keyName = keys.CharacterToKey(string(r))
+			}
+		}
 	}
 	if keyName == "" {
 		return p.reissueSequenceAsKeys(p.seqBuf, true)
