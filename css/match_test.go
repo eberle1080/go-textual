@@ -11,10 +11,10 @@ type mockNode struct {
 	path      []*mockNode
 }
 
-func (n *mockNode) CSSTypeNames() []string        { return n.typeNames }
-func (n *mockNode) CSSClasses() map[string]bool   { return n.classes }
-func (n *mockNode) NodeID() string                { return n.id }
-func (n *mockNode) HasClass(name string) bool     { return n.classes[name] }
+func (n *mockNode) CSSTypeNames() []string      { return n.typeNames }
+func (n *mockNode) CSSClasses() map[string]bool { return n.classes }
+func (n *mockNode) NodeID() string              { return n.id }
+func (n *mockNode) HasClass(name string) bool   { return n.classes[name] }
 func (n *mockNode) HasPseudoClasses(set map[string]bool) bool {
 	for pc := range set {
 		if !n.pseudos[pc] {
@@ -23,6 +23,7 @@ func (n *mockNode) HasPseudoClasses(set map[string]bool) bool {
 	}
 	return true
 }
+
 func (n *mockNode) CSSPathNodes() []SelectorNode {
 	result := make([]SelectorNode, len(n.path))
 	for i, p := range n.path {

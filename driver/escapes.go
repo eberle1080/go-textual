@@ -29,7 +29,7 @@ const (
 	enableSynchronizedOutput = "\x1b[?2026h"
 
 	// In-band window resize (request mode).
-	queryInBandResize  = "\x1b[?2048$p"
-	enableInBandResize = "\x1b[?2048h"
+	queryInBandResize   = "\x1b[?2048$p"
+	enableInBandResize  = "\x1b[?2048h"
 	disableInBandResize = "\x1b[?2048l"
 )

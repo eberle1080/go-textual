@@ -406,8 +406,10 @@ func (a *boxModelAdapter) Styles() *css.RenderStyles { return a.w.Styles() }
 func (a *boxModelAdapter) Display() bool             { return a.w.Display() }
 
 // Prevent unused import.
-var _ = layoutresolve.Resolve
-var _ = makeEdges
+var (
+	_ = layoutresolve.Resolve
+	_ = makeEdges
+)
 
 // cellPos records the grid position and span of a single child as determined
 // by the span-aware cell assignment algorithm.

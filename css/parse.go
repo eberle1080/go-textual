@@ -12,15 +12,15 @@ type SelectorMapEntry struct {
 
 // selectorTokenMap maps tokenizer token names to selector types and specificities.
 var selectorTokenMap = map[string]SelectorMapEntry{
-	"selector":                {SelectorType_Type, Specificity3{0, 0, 1}},
-	"selector_start":          {SelectorType_Type, Specificity3{0, 0, 1}},
-	"selector_class":          {SelectorClass, Specificity3{0, 1, 0}},
-	"selector_start_class":    {SelectorClass, Specificity3{0, 1, 0}},
-	"selector_id":             {SelectorID, Specificity3{1, 0, 0}},
-	"selector_start_id":       {SelectorID, Specificity3{1, 0, 0}},
-	"selector_universal":      {SelectorUniversal, Specificity3{0, 0, 0}},
+	"selector":                 {SelectorType_Type, Specificity3{0, 0, 1}},
+	"selector_start":           {SelectorType_Type, Specificity3{0, 0, 1}},
+	"selector_class":           {SelectorClass, Specificity3{0, 1, 0}},
+	"selector_start_class":     {SelectorClass, Specificity3{0, 1, 0}},
+	"selector_id":              {SelectorID, Specificity3{1, 0, 0}},
+	"selector_start_id":        {SelectorID, Specificity3{1, 0, 0}},
+	"selector_universal":       {SelectorUniversal, Specificity3{0, 0, 0}},
 	"selector_start_universal": {SelectorUniversal, Specificity3{0, 0, 0}},
-	"nested":                  {SelectorNested, Specificity3{0, 0, 0}},
+	"nested":                   {SelectorNested, Specificity3{0, 0, 0}},
 }
 
 // TokenIterator is a simple iterator over a slice of tokens.

@@ -41,14 +41,14 @@ func newMockStylesheetNode(typeNames []string, classes map[string]bool, id strin
 	}
 }
 
-func (n *mockStylesheetNode) SelectorNames() map[string]bool   { return n.selectorNames }
-func (n *mockStylesheetNode) NodeStyles() *RenderStyles        { return n.styles }
-func (n *mockStylesheetNode) NotifyStyleUpdate()               {}
-func (n *mockStylesheetNode) Refresh()                         {}
-func (n *mockStylesheetNode) PseudoClassesCacheKey() any       { return n.id }
-func (n *mockStylesheetNode) CSSTypeName() string              { return n.typeName }
-func (n *mockStylesheetNode) Parent() StylesheetNode           { return n.parent }
-func (n *mockStylesheetNode) Children() []StylesheetNode       { return n.children }
+func (n *mockStylesheetNode) SelectorNames() map[string]bool { return n.selectorNames }
+func (n *mockStylesheetNode) NodeStyles() *RenderStyles      { return n.styles }
+func (n *mockStylesheetNode) NotifyStyleUpdate()             {}
+func (n *mockStylesheetNode) Refresh()                       {}
+func (n *mockStylesheetNode) PseudoClassesCacheKey() any     { return n.id }
+func (n *mockStylesheetNode) CSSTypeName() string            { return n.typeName }
+func (n *mockStylesheetNode) Parent() StylesheetNode         { return n.parent }
+func (n *mockStylesheetNode) Children() []StylesheetNode     { return n.children }
 func (n *mockStylesheetNode) CSSPathNodes() []SelectorNode {
 	result := make([]SelectorNode, len(n.path))
 	for i, p := range n.path {

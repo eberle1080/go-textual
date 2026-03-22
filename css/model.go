@@ -7,10 +7,10 @@ type SelectorType int
 
 const (
 	SelectorUniversal SelectorType = iota + 1 // * operator
-	SelectorType_Type                          // CSS type selector e.g. Label
-	SelectorClass                              // CSS class selector e.g. .loaded
-	SelectorID                                 // CSS ID selector e.g. #main
-	SelectorNested                             // Nesting placeholder &
+	SelectorType_Type                         // CSS type selector e.g. Label
+	SelectorClass                             // CSS class selector e.g. .loaded
+	SelectorID                                // CSS ID selector e.g. #main
+	SelectorNested                            // Nesting placeholder &
 )
 
 // CombinatorType is the type of combinator between two selectors.
@@ -18,8 +18,8 @@ type CombinatorType int
 
 const (
 	CombinatorSame       CombinatorType = iota + 1 // Selectors are combined
-	CombinatorDescendant                            // Descendant combinator (space)
-	CombinatorChild                                 // Child combinator >
+	CombinatorDescendant                           // Descendant combinator (space)
+	CombinatorChild                                // Child combinator >
 )
 
 // SelectorNode is the interface implemented by DOM nodes for selector matching.
@@ -38,12 +38,12 @@ type SelectorNode interface {
 
 // Selector represents a single CSS selector component.
 type Selector struct {
-	Name         string
-	Combinator   CombinatorType
-	Type         SelectorType
+	Name          string
+	Combinator    CombinatorType
+	Type          SelectorType
 	PseudoClasses map[string]bool
-	Specificity  Specificity3
-	Advance      int // 1 unless the next selector has CombinatorSame
+	Specificity   Specificity3
+	Advance       int // 1 unless the next selector has CombinatorSame
 }
 
 // AddPseudoClass adds a pseudo-class and increments the class specificity.

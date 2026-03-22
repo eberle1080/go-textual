@@ -24,10 +24,10 @@ import (
 )
 
 type metric struct {
-	name    string
-	value   float64
-	total   float64
-	bar     *widgets.ProgressBar
+	name  string
+	value float64
+	total float64
+	bar   *widgets.ProgressBar
 }
 
 type DashboardScreen struct {

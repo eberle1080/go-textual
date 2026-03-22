@@ -139,8 +139,8 @@ func initSequences() {
 		"\x1bOD": keys1(keys.Left),
 
 		// --- Navigation keys ---
-		"\x1b[H": keys1(keys.Home),
-		"\x1b[F": keys1(keys.End),
+		"\x1b[H":  keys1(keys.Home),
+		"\x1b[F":  keys1(keys.End),
 		"\x1b[1~": keys1(keys.Home),
 		"\x1b[4~": keys1(keys.End),
 		"\x1b[2~": keys1(keys.Insert),

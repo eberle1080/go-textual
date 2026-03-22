@@ -81,7 +81,7 @@ func TestLRUCache_Eviction(t *testing.T) {
 	c.Set("a", 1)
 	c.Set("b", 2)
 	c.Set("c", 3)
-	c.Get("a") // make "a" most recently used
+	c.Get("a")    // make "a" most recently used
 	c.Set("d", 4) // should evict "b" (LRU)
 
 	if _, ok := c.Get("b"); ok {

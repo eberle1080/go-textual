@@ -72,10 +72,10 @@ func NewDOMNode(opts ...DOMNodeOption) *DOMNode {
 
 // ── dom.Node implementation ───────────────────────────────────────────────
 
-func (d *DOMNode) NodeID() string          { return d.id }
-func (d *DOMNode) NodeName() string        { return d.name }
-func (d *DOMNode) CSSTypeName() string     { return d.cssTypeName }
-func (d *DOMNode) CSSTypeNames() []string  { return d.cssTypeNames }
+func (d *DOMNode) NodeID() string              { return d.id }
+func (d *DOMNode) NodeName() string            { return d.name }
+func (d *DOMNode) CSSTypeName() string         { return d.cssTypeName }
+func (d *DOMNode) CSSTypeNames() []string      { return d.cssTypeNames }
 func (d *DOMNode) CSSClasses() map[string]bool { return d.classes }
 
 func (d *DOMNode) HasClass(name string) bool { return d.classes[name] }
@@ -111,7 +111,7 @@ func (d *DOMNode) CSSPathNodes() []css.SelectorNode {
 	return path
 }
 
-func (d *DOMNode) Parent() Node      { return d.parent }
+func (d *DOMNode) Parent() Node { return d.parent }
 func (d *DOMNode) Children() *NodeList {
 	if d.nodes == nil {
 		d.nodes = NewNodeList()

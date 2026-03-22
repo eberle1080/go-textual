@@ -24,10 +24,10 @@ import (
 
 type TodoScreen struct {
 	screen.BaseScreen
-	input    *widgets.Input
-	tasks    []todoTask
-	cursor   int
-	focused  bool // true = list focused, false = input focused
+	input   *widgets.Input
+	tasks   []todoTask
+	cursor  int
+	focused bool // true = list focused, false = input focused
 }
 
 type todoTask struct {
@@ -37,7 +37,7 @@ type todoTask struct {
 
 func NewTodoScreen() *TodoScreen {
 	s := &TodoScreen{
-		input:  widgets.NewInput("New task…"),
+		input: widgets.NewInput("New task…"),
 	}
 	return s
 }

@@ -81,13 +81,13 @@ func TestScalarResolve(t *testing.T) {
 		want float64
 	}{
 		{Scalar{Value: 10, Unit: UnitCells}, 10},
-		{Scalar{Value: 2, Unit: UnitFraction, PercentUnit: UnitWidth}, 2}, // fractionUnit=1 → 2*1=2
+		{Scalar{Value: 2, Unit: UnitFraction, PercentUnit: UnitWidth}, 2},   // fractionUnit=1 → 2*1=2
 		{Scalar{Value: 50, Unit: UnitPercent, PercentUnit: UnitWidth}, 50},  // 50% of 100 = 50
 		{Scalar{Value: 50, Unit: UnitPercent, PercentUnit: UnitHeight}, 25}, // 50% of 50 = 25
-		{Scalar{Value: 10, Unit: UnitWidth}, 10},                             // 10% of width=100
-		{Scalar{Value: 10, Unit: UnitHeight}, 5},                             // 10% of height=50
-		{Scalar{Value: 10, Unit: UnitViewWidth}, 20},                         // 10% of vw=200
-		{Scalar{Value: 10, Unit: UnitViewHeight}, 10},                        // 10% of vh=100
+		{Scalar{Value: 10, Unit: UnitWidth}, 10},                            // 10% of width=100
+		{Scalar{Value: 10, Unit: UnitHeight}, 5},                            // 10% of height=50
+		{Scalar{Value: 10, Unit: UnitViewWidth}, 20},                        // 10% of vw=200
+		{Scalar{Value: 10, Unit: UnitViewHeight}, 10},                       // 10% of vh=100
 	}
 	for _, tt := range tests {
 		r, err := tt.s.Resolve(size, viewport, nil)

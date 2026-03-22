@@ -61,9 +61,9 @@ func NewStylesheet(variables map[string]string) *Stylesheet {
 		variables = make(map[string]string)
 	}
 	return &Stylesheet{
-		variables:    variables,
-		source:       make(map[CSSLocation]CSSSource),
-		invalidCSS:   make(map[string]bool),
+		variables:  variables,
+		source:     make(map[CSSLocation]CSSSource),
+		invalidCSS: make(map[string]bool),
 	}
 }
 

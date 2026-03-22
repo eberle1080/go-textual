@@ -792,14 +792,14 @@ func (s *Styles) borderEdge(name string) EdgeStyle {
 	return EdgeStyle{Type: "none", Color: color.New(0, 255, 0)}
 }
 
-func (s *Styles) BorderTop() EdgeStyle    { return s.borderEdge("border_top") }
-func (s *Styles) BorderRight() EdgeStyle  { return s.borderEdge("border_right") }
-func (s *Styles) BorderBottom() EdgeStyle { return s.borderEdge("border_bottom") }
-func (s *Styles) BorderLeft() EdgeStyle   { return s.borderEdge("border_left") }
-func (s *Styles) OutlineTop() EdgeStyle   { return s.borderEdge("outline_top") }
-func (s *Styles) OutlineRight() EdgeStyle { return s.borderEdge("outline_right") }
+func (s *Styles) BorderTop() EdgeStyle     { return s.borderEdge("border_top") }
+func (s *Styles) BorderRight() EdgeStyle   { return s.borderEdge("border_right") }
+func (s *Styles) BorderBottom() EdgeStyle  { return s.borderEdge("border_bottom") }
+func (s *Styles) BorderLeft() EdgeStyle    { return s.borderEdge("border_left") }
+func (s *Styles) OutlineTop() EdgeStyle    { return s.borderEdge("outline_top") }
+func (s *Styles) OutlineRight() EdgeStyle  { return s.borderEdge("outline_right") }
 func (s *Styles) OutlineBottom() EdgeStyle { return s.borderEdge("outline_bottom") }
-func (s *Styles) OutlineLeft() EdgeStyle  { return s.borderEdge("outline_left") }
+func (s *Styles) OutlineLeft() EdgeStyle   { return s.borderEdge("outline_left") }
 
 func (s *Styles) Keyline() EdgeStyle {
 	if v, ok := s.Rules["keyline"]; ok {
@@ -855,9 +855,9 @@ func (s *Styles) scalar(name string) *Scalar {
 	return nil
 }
 
-func (s *Styles) Width() *Scalar    { return s.scalar("width") }
-func (s *Styles) Height() *Scalar   { return s.scalar("height") }
-func (s *Styles) MinWidth() *Scalar { return s.scalar("min_width") }
+func (s *Styles) Width() *Scalar     { return s.scalar("width") }
+func (s *Styles) Height() *Scalar    { return s.scalar("height") }
+func (s *Styles) MinWidth() *Scalar  { return s.scalar("min_width") }
 func (s *Styles) MinHeight() *Scalar { return s.scalar("min_height") }
 func (s *Styles) MaxWidth() *Scalar  { return s.scalar("max_width") }
 func (s *Styles) MaxHeight() *Scalar { return s.scalar("max_height") }
@@ -952,21 +952,27 @@ func (s *Styles) colorRule(name string, def color.Color) color.Color {
 func (s *Styles) ScrollbarColor() color.Color {
 	return s.colorRule("scrollbar_color", color.New(188, 0, 188)) // ansi_bright_magenta approx
 }
+
 func (s *Styles) ScrollbarColorHover() color.Color {
 	return s.colorRule("scrollbar_color_hover", color.New(128, 128, 0)) // ansi_yellow approx
 }
+
 func (s *Styles) ScrollbarColorActive() color.Color {
 	return s.colorRule("scrollbar_color_active", color.New(255, 255, 0)) // ansi_bright_yellow approx
 }
+
 func (s *Styles) ScrollbarCornerColor() color.Color {
 	return s.colorRule("scrollbar_corner_color", color.New(102, 102, 102))
 }
+
 func (s *Styles) ScrollbarBackground() color.Color {
 	return s.colorRule("scrollbar_background", color.New(85, 85, 85))
 }
+
 func (s *Styles) ScrollbarBackgroundHover() color.Color {
 	return s.colorRule("scrollbar_background_hover", color.New(68, 68, 68))
 }
+
 func (s *Styles) ScrollbarBackgroundActive() color.Color {
 	return s.colorRule("scrollbar_background_active", color.Black)
 }
@@ -1055,8 +1061,8 @@ func (s *Styles) ContentAlignVertical() AlignVertical {
 	return "top"
 }
 
-func (s *Styles) GridSizeRows() int    { return s.intRule("grid_size_rows", 0) }
-func (s *Styles) GridSizeColumns() int { return s.intRule("grid_size_columns", 1) }
+func (s *Styles) GridSizeRows() int         { return s.intRule("grid_size_rows", 0) }
+func (s *Styles) GridSizeColumns() int      { return s.intRule("grid_size_columns", 1) }
 func (s *Styles) GridGutterHorizontal() int { return s.intRule("grid_gutter_horizontal", 0) }
 func (s *Styles) GridGutterVertical() int   { return s.intRule("grid_gutter_vertical", 0) }
 func (s *Styles) RowSpan() int              { return s.intRule("row_span", 1) }
@@ -1086,19 +1092,35 @@ func (s *Styles) TextAlign() TextAlign {
 	return "start"
 }
 
-func (s *Styles) LinkColor() color.Color          { return s.colorRule("link_color", color.Transparent) }
-func (s *Styles) AutoLinkColor() bool              { return s.boolRule("auto_link_color", false) }
-func (s *Styles) LinkBackground() color.Color      { return s.colorRule("link_background", color.Transparent) }
-func (s *Styles) LinkColorHover() color.Color      { return s.colorRule("link_color_hover", color.Transparent) }
-func (s *Styles) AutoLinkColorHover() bool         { return s.boolRule("auto_link_color_hover", false) }
-func (s *Styles) LinkBackgroundHover() color.Color { return s.colorRule("link_background_hover", color.Transparent) }
+func (s *Styles) LinkColor() color.Color { return s.colorRule("link_color", color.Transparent) }
+func (s *Styles) AutoLinkColor() bool    { return s.boolRule("auto_link_color", false) }
+func (s *Styles) LinkBackground() color.Color {
+	return s.colorRule("link_background", color.Transparent)
+}
+func (s *Styles) LinkColorHover() color.Color {
+	return s.colorRule("link_color_hover", color.Transparent)
+}
+func (s *Styles) AutoLinkColorHover() bool { return s.boolRule("auto_link_color_hover", false) }
+func (s *Styles) LinkBackgroundHover() color.Color {
+	return s.colorRule("link_background_hover", color.Transparent)
+}
 
-func (s *Styles) AutoBorderTitleColor() bool       { return s.boolRule("auto_border_title_color", false) }
-func (s *Styles) BorderTitleColor() color.Color    { return s.colorRule("border_title_color", color.NewWithAlpha(255, 255, 255, 0)) }
-func (s *Styles) BorderTitleBackground() color.Color { return s.colorRule("border_title_background", color.Transparent) }
-func (s *Styles) AutoBorderSubtitleColor() bool      { return s.boolRule("auto_border_subtitle_color", false) }
-func (s *Styles) BorderSubtitleColor() color.Color    { return s.colorRule("border_subtitle_color", color.NewWithAlpha(255, 255, 255, 0)) }
-func (s *Styles) BorderSubtitleBackground() color.Color { return s.colorRule("border_subtitle_background", color.Transparent) }
+func (s *Styles) AutoBorderTitleColor() bool { return s.boolRule("auto_border_title_color", false) }
+func (s *Styles) BorderTitleColor() color.Color {
+	return s.colorRule("border_title_color", color.NewWithAlpha(255, 255, 255, 0))
+}
+func (s *Styles) BorderTitleBackground() color.Color {
+	return s.colorRule("border_title_background", color.Transparent)
+}
+func (s *Styles) AutoBorderSubtitleColor() bool {
+	return s.boolRule("auto_border_subtitle_color", false)
+}
+func (s *Styles) BorderSubtitleColor() color.Color {
+	return s.colorRule("border_subtitle_color", color.NewWithAlpha(255, 255, 255, 0))
+}
+func (s *Styles) BorderSubtitleBackground() color.Color {
+	return s.colorRule("border_subtitle_background", color.Transparent)
+}
 
 func (s *Styles) boolRule(name string, def bool) bool {
 	if v, ok := s.Rules[name]; ok {
@@ -1251,95 +1273,103 @@ func (s *Styles) Pointer() PointerShape {
 
 // ── Typed setters ──────────────────────────────────────────────────────────
 
-func (s *Styles) SetDisplay(v Display)                        { s.Rules["display"] = v }
-func (s *Styles) SetVisibility(v Visibility)                  { s.Rules["visibility"] = v }
-func (s *Styles) SetLayout(v string)                          { s.Rules["layout"] = v }
-func (s *Styles) SetAutoColor(v bool)                         { s.Rules["auto_color"] = v }
-func (s *Styles) SetColor(v color.Color)                      { s.Rules["color"] = v }
-func (s *Styles) SetBackground(v color.Color)                 { s.Rules["background"] = v }
-func (s *Styles) SetBackgroundTint(v color.Color)             { s.Rules["background_tint"] = v }
-func (s *Styles) SetOpacity(v float64)                        { s.Rules["opacity"] = v }
-func (s *Styles) SetTextOpacity(v float64)                    { s.Rules["text_opacity"] = v }
-func (s *Styles) SetPadding(v geometry.Spacing)               { s.Rules["padding"] = v }
-func (s *Styles) SetMargin(v geometry.Spacing)                { s.Rules["margin"] = v }
-func (s *Styles) SetOffset(v ScalarOffset)                    { s.Rules["offset"] = v }
-func (s *Styles) SetPosition(v Position)                      { s.Rules["position"] = v }
-func (s *Styles) SetBorderTop(v EdgeStyle)                    { s.Rules["border_top"] = v }
-func (s *Styles) SetBorderRight(v EdgeStyle)                  { s.Rules["border_right"] = v }
-func (s *Styles) SetBorderBottom(v EdgeStyle)                 { s.Rules["border_bottom"] = v }
-func (s *Styles) SetBorderLeft(v EdgeStyle)                   { s.Rules["border_left"] = v }
-func (s *Styles) SetOutlineTop(v EdgeStyle)                   { s.Rules["outline_top"] = v }
-func (s *Styles) SetOutlineRight(v EdgeStyle)                 { s.Rules["outline_right"] = v }
-func (s *Styles) SetOutlineBottom(v EdgeStyle)                { s.Rules["outline_bottom"] = v }
-func (s *Styles) SetOutlineLeft(v EdgeStyle)                  { s.Rules["outline_left"] = v }
-func (s *Styles) SetKeyline(v EdgeStyle)                      { s.Rules["keyline"] = v }
-func (s *Styles) SetBorderTitleAlign(v AlignHorizontal)       { s.Rules["border_title_align"] = v }
-func (s *Styles) SetBorderSubtitleAlign(v AlignHorizontal)    { s.Rules["border_subtitle_align"] = v }
-func (s *Styles) SetBoxSizing(v BoxSizing)                    { s.Rules["box_sizing"] = v }
-func (s *Styles) SetWidth(v Scalar)                           { s.Rules["width"] = v }
-func (s *Styles) SetHeight(v Scalar)                          { s.Rules["height"] = v }
-func (s *Styles) SetMinWidth(v Scalar)                        { s.Rules["min_width"] = v }
-func (s *Styles) SetMinHeight(v Scalar)                       { s.Rules["min_height"] = v }
-func (s *Styles) SetMaxWidth(v Scalar)                        { s.Rules["max_width"] = v }
-func (s *Styles) SetMaxHeight(v Scalar)                       { s.Rules["max_height"] = v }
-func (s *Styles) SetDock(v string)                            { s.Rules["dock"] = v }
-func (s *Styles) SetSplit(v string)                           { s.Rules["split"] = v }
-func (s *Styles) SetOverflowX(v Overflow)                     { s.Rules["overflow_x"] = v }
-func (s *Styles) SetOverflowY(v Overflow)                     { s.Rules["overflow_y"] = v }
-func (s *Styles) SetLayers(v []string)                        { s.Rules["layers"] = v }
-func (s *Styles) SetLayer(v string)                           { s.Rules["layer"] = v }
-func (s *Styles) SetTransitions(v map[string]Transition)      { s.Rules["transitions"] = v }
-func (s *Styles) SetTint(v color.Color)                       { s.Rules["tint"] = v }
-func (s *Styles) SetScrollbarColor(v color.Color)             { s.Rules["scrollbar_color"] = v }
-func (s *Styles) SetScrollbarColorHover(v color.Color)        { s.Rules["scrollbar_color_hover"] = v }
-func (s *Styles) SetScrollbarColorActive(v color.Color)       { s.Rules["scrollbar_color_active"] = v }
-func (s *Styles) SetScrollbarCornerColor(v color.Color)       { s.Rules["scrollbar_corner_color"] = v }
-func (s *Styles) SetScrollbarBackground(v color.Color)        { s.Rules["scrollbar_background"] = v }
-func (s *Styles) SetScrollbarBackgroundHover(v color.Color)   { s.Rules["scrollbar_background_hover"] = v }
-func (s *Styles) SetScrollbarBackgroundActive(v color.Color)  { s.Rules["scrollbar_background_active"] = v }
-func (s *Styles) SetScrollbarGutter(v ScrollbarGutter)        { s.Rules["scrollbar_gutter"] = v }
+func (s *Styles) SetDisplay(v Display)                     { s.Rules["display"] = v }
+func (s *Styles) SetVisibility(v Visibility)               { s.Rules["visibility"] = v }
+func (s *Styles) SetLayout(v string)                       { s.Rules["layout"] = v }
+func (s *Styles) SetAutoColor(v bool)                      { s.Rules["auto_color"] = v }
+func (s *Styles) SetColor(v color.Color)                   { s.Rules["color"] = v }
+func (s *Styles) SetBackground(v color.Color)              { s.Rules["background"] = v }
+func (s *Styles) SetBackgroundTint(v color.Color)          { s.Rules["background_tint"] = v }
+func (s *Styles) SetOpacity(v float64)                     { s.Rules["opacity"] = v }
+func (s *Styles) SetTextOpacity(v float64)                 { s.Rules["text_opacity"] = v }
+func (s *Styles) SetPadding(v geometry.Spacing)            { s.Rules["padding"] = v }
+func (s *Styles) SetMargin(v geometry.Spacing)             { s.Rules["margin"] = v }
+func (s *Styles) SetOffset(v ScalarOffset)                 { s.Rules["offset"] = v }
+func (s *Styles) SetPosition(v Position)                   { s.Rules["position"] = v }
+func (s *Styles) SetBorderTop(v EdgeStyle)                 { s.Rules["border_top"] = v }
+func (s *Styles) SetBorderRight(v EdgeStyle)               { s.Rules["border_right"] = v }
+func (s *Styles) SetBorderBottom(v EdgeStyle)              { s.Rules["border_bottom"] = v }
+func (s *Styles) SetBorderLeft(v EdgeStyle)                { s.Rules["border_left"] = v }
+func (s *Styles) SetOutlineTop(v EdgeStyle)                { s.Rules["outline_top"] = v }
+func (s *Styles) SetOutlineRight(v EdgeStyle)              { s.Rules["outline_right"] = v }
+func (s *Styles) SetOutlineBottom(v EdgeStyle)             { s.Rules["outline_bottom"] = v }
+func (s *Styles) SetOutlineLeft(v EdgeStyle)               { s.Rules["outline_left"] = v }
+func (s *Styles) SetKeyline(v EdgeStyle)                   { s.Rules["keyline"] = v }
+func (s *Styles) SetBorderTitleAlign(v AlignHorizontal)    { s.Rules["border_title_align"] = v }
+func (s *Styles) SetBorderSubtitleAlign(v AlignHorizontal) { s.Rules["border_subtitle_align"] = v }
+func (s *Styles) SetBoxSizing(v BoxSizing)                 { s.Rules["box_sizing"] = v }
+func (s *Styles) SetWidth(v Scalar)                        { s.Rules["width"] = v }
+func (s *Styles) SetHeight(v Scalar)                       { s.Rules["height"] = v }
+func (s *Styles) SetMinWidth(v Scalar)                     { s.Rules["min_width"] = v }
+func (s *Styles) SetMinHeight(v Scalar)                    { s.Rules["min_height"] = v }
+func (s *Styles) SetMaxWidth(v Scalar)                     { s.Rules["max_width"] = v }
+func (s *Styles) SetMaxHeight(v Scalar)                    { s.Rules["max_height"] = v }
+func (s *Styles) SetDock(v string)                         { s.Rules["dock"] = v }
+func (s *Styles) SetSplit(v string)                        { s.Rules["split"] = v }
+func (s *Styles) SetOverflowX(v Overflow)                  { s.Rules["overflow_x"] = v }
+func (s *Styles) SetOverflowY(v Overflow)                  { s.Rules["overflow_y"] = v }
+func (s *Styles) SetLayers(v []string)                     { s.Rules["layers"] = v }
+func (s *Styles) SetLayer(v string)                        { s.Rules["layer"] = v }
+func (s *Styles) SetTransitions(v map[string]Transition)   { s.Rules["transitions"] = v }
+func (s *Styles) SetTint(v color.Color)                    { s.Rules["tint"] = v }
+func (s *Styles) SetScrollbarColor(v color.Color)          { s.Rules["scrollbar_color"] = v }
+func (s *Styles) SetScrollbarColorHover(v color.Color)     { s.Rules["scrollbar_color_hover"] = v }
+func (s *Styles) SetScrollbarColorActive(v color.Color)    { s.Rules["scrollbar_color_active"] = v }
+func (s *Styles) SetScrollbarCornerColor(v color.Color)    { s.Rules["scrollbar_corner_color"] = v }
+func (s *Styles) SetScrollbarBackground(v color.Color)     { s.Rules["scrollbar_background"] = v }
+func (s *Styles) SetScrollbarBackgroundHover(v color.Color) {
+	s.Rules["scrollbar_background_hover"] = v
+}
+func (s *Styles) SetScrollbarBackgroundActive(v color.Color) {
+	s.Rules["scrollbar_background_active"] = v
+}
+func (s *Styles) SetScrollbarGutter(v ScrollbarGutter)         { s.Rules["scrollbar_gutter"] = v }
 func (s *Styles) SetScrollbarSizeVertical(v int)               { s.Rules["scrollbar_size_vertical"] = v }
 func (s *Styles) SetScrollbarSizeHorizontal(v int)             { s.Rules["scrollbar_size_horizontal"] = v }
 func (s *Styles) SetScrollbarVisibility(v ScrollbarVisibility) { s.Rules["scrollbar_visibility"] = v }
 func (s *Styles) SetAlignHorizontal(v AlignHorizontal)         { s.Rules["align_horizontal"] = v }
 func (s *Styles) SetAlignVertical(v AlignVertical)             { s.Rules["align_vertical"] = v }
-func (s *Styles) SetContentAlignHorizontal(v AlignHorizontal)  { s.Rules["content_align_horizontal"] = v }
-func (s *Styles) SetContentAlignVertical(v AlignVertical)      { s.Rules["content_align_vertical"] = v }
-func (s *Styles) SetGridSizeRows(v int)                        { s.Rules["grid_size_rows"] = v }
-func (s *Styles) SetGridSizeColumns(v int)                     { s.Rules["grid_size_columns"] = v }
-func (s *Styles) SetGridGutterHorizontal(v int)                { s.Rules["grid_gutter_horizontal"] = v }
-func (s *Styles) SetGridGutterVertical(v int)                  { s.Rules["grid_gutter_vertical"] = v }
-func (s *Styles) SetGridRows(v []Scalar)                       { s.Rules["grid_rows"] = v }
-func (s *Styles) SetGridColumns(v []Scalar)                    { s.Rules["grid_columns"] = v }
-func (s *Styles) SetRowSpan(v int)                             { s.Rules["row_span"] = v }
-func (s *Styles) SetColumnSpan(v int)                          { s.Rules["column_span"] = v }
-func (s *Styles) SetTextAlign(v TextAlign)                     { s.Rules["text_align"] = v }
-func (s *Styles) SetLinkColor(v color.Color)                   { s.Rules["link_color"] = v }
-func (s *Styles) SetAutoLinkColor(v bool)                      { s.Rules["auto_link_color"] = v }
-func (s *Styles) SetLinkBackground(v color.Color)              { s.Rules["link_background"] = v }
-func (s *Styles) SetLinkColorHover(v color.Color)              { s.Rules["link_color_hover"] = v }
-func (s *Styles) SetAutoLinkColorHover(v bool)                 { s.Rules["auto_link_color_hover"] = v }
-func (s *Styles) SetLinkBackgroundHover(v color.Color)         { s.Rules["link_background_hover"] = v }
-func (s *Styles) SetAutoBorderTitleColor(v bool)               { s.Rules["auto_border_title_color"] = v }
-func (s *Styles) SetBorderTitleColor(v color.Color)            { s.Rules["border_title_color"] = v }
-func (s *Styles) SetBorderTitleBackground(v color.Color)       { s.Rules["border_title_background"] = v }
-func (s *Styles) SetAutoBorderSubtitleColor(v bool)            { s.Rules["auto_border_subtitle_color"] = v }
-func (s *Styles) SetBorderSubtitleColor(v color.Color)         { s.Rules["border_subtitle_color"] = v }
-func (s *Styles) SetBorderSubtitleBackground(v color.Color)    { s.Rules["border_subtitle_background"] = v }
-func (s *Styles) SetHatch(v EdgeStyle)                         { s.Rules["hatch"] = v }
-func (s *Styles) SetOverlay(v Overlay)                         { s.Rules["overlay"] = v }
-func (s *Styles) SetConstrainX(v Constrain)                    { s.Rules["constrain_x"] = v }
-func (s *Styles) SetConstrainY(v Constrain)                    { s.Rules["constrain_y"] = v }
-func (s *Styles) SetTextWrap(v TextWrap)                       { s.Rules["text_wrap"] = v }
-func (s *Styles) SetTextOverflow(v TextOverflow)               { s.Rules["text_overflow"] = v }
-func (s *Styles) SetExpand(v Expand)                           { s.Rules["expand"] = v }
-func (s *Styles) SetLinePad(v int)                             { s.Rules["line_pad"] = v }
-func (s *Styles) SetPointer(v PointerShape)                    { s.Rules["pointer"] = v }
-func (s *Styles) SetTextStyle(v string)                        { s.Rules["text_style"] = v }
-func (s *Styles) SetLinkStyle(v string)                        { s.Rules["link_style"] = v }
-func (s *Styles) SetLinkStyleHover(v string)                   { s.Rules["link_style_hover"] = v }
-func (s *Styles) SetBorderTitleStyle(v string)                 { s.Rules["border_title_style"] = v }
-func (s *Styles) SetBorderSubtitleStyle(v string)              { s.Rules["border_subtitle_style"] = v }
+func (s *Styles) SetContentAlignHorizontal(v AlignHorizontal) {
+	s.Rules["content_align_horizontal"] = v
+}
+func (s *Styles) SetContentAlignVertical(v AlignVertical) { s.Rules["content_align_vertical"] = v }
+func (s *Styles) SetGridSizeRows(v int)                   { s.Rules["grid_size_rows"] = v }
+func (s *Styles) SetGridSizeColumns(v int)                { s.Rules["grid_size_columns"] = v }
+func (s *Styles) SetGridGutterHorizontal(v int)           { s.Rules["grid_gutter_horizontal"] = v }
+func (s *Styles) SetGridGutterVertical(v int)             { s.Rules["grid_gutter_vertical"] = v }
+func (s *Styles) SetGridRows(v []Scalar)                  { s.Rules["grid_rows"] = v }
+func (s *Styles) SetGridColumns(v []Scalar)               { s.Rules["grid_columns"] = v }
+func (s *Styles) SetRowSpan(v int)                        { s.Rules["row_span"] = v }
+func (s *Styles) SetColumnSpan(v int)                     { s.Rules["column_span"] = v }
+func (s *Styles) SetTextAlign(v TextAlign)                { s.Rules["text_align"] = v }
+func (s *Styles) SetLinkColor(v color.Color)              { s.Rules["link_color"] = v }
+func (s *Styles) SetAutoLinkColor(v bool)                 { s.Rules["auto_link_color"] = v }
+func (s *Styles) SetLinkBackground(v color.Color)         { s.Rules["link_background"] = v }
+func (s *Styles) SetLinkColorHover(v color.Color)         { s.Rules["link_color_hover"] = v }
+func (s *Styles) SetAutoLinkColorHover(v bool)            { s.Rules["auto_link_color_hover"] = v }
+func (s *Styles) SetLinkBackgroundHover(v color.Color)    { s.Rules["link_background_hover"] = v }
+func (s *Styles) SetAutoBorderTitleColor(v bool)          { s.Rules["auto_border_title_color"] = v }
+func (s *Styles) SetBorderTitleColor(v color.Color)       { s.Rules["border_title_color"] = v }
+func (s *Styles) SetBorderTitleBackground(v color.Color)  { s.Rules["border_title_background"] = v }
+func (s *Styles) SetAutoBorderSubtitleColor(v bool)       { s.Rules["auto_border_subtitle_color"] = v }
+func (s *Styles) SetBorderSubtitleColor(v color.Color)    { s.Rules["border_subtitle_color"] = v }
+func (s *Styles) SetBorderSubtitleBackground(v color.Color) {
+	s.Rules["border_subtitle_background"] = v
+}
+func (s *Styles) SetHatch(v EdgeStyle)            { s.Rules["hatch"] = v }
+func (s *Styles) SetOverlay(v Overlay)            { s.Rules["overlay"] = v }
+func (s *Styles) SetConstrainX(v Constrain)       { s.Rules["constrain_x"] = v }
+func (s *Styles) SetConstrainY(v Constrain)       { s.Rules["constrain_y"] = v }
+func (s *Styles) SetTextWrap(v TextWrap)          { s.Rules["text_wrap"] = v }
+func (s *Styles) SetTextOverflow(v TextOverflow)  { s.Rules["text_overflow"] = v }
+func (s *Styles) SetExpand(v Expand)              { s.Rules["expand"] = v }
+func (s *Styles) SetLinePad(v int)                { s.Rules["line_pad"] = v }
+func (s *Styles) SetPointer(v PointerShape)       { s.Rules["pointer"] = v }
+func (s *Styles) SetTextStyle(v string)           { s.Rules["text_style"] = v }
+func (s *Styles) SetLinkStyle(v string)           { s.Rules["link_style"] = v }
+func (s *Styles) SetLinkStyleHover(v string)      { s.Rules["link_style_hover"] = v }
+func (s *Styles) SetBorderTitleStyle(v string)    { s.Rules["border_title_style"] = v }
+func (s *Styles) SetBorderSubtitleStyle(v string) { s.Rules["border_subtitle_style"] = v }
 
 // builtInStyleDefault returns the package-level default value for a CSS rule
 // name, mirroring the return values of the typed getter methods on Styles.

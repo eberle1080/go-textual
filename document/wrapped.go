@@ -222,4 +222,3 @@ func (w *WrappedDocument) GetTextAtVisualLine(y int) string {
 	}
 	return sections[sectionIndex]
 }
-

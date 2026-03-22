@@ -205,9 +205,9 @@ func TestColorBlend(t *testing.T) {
 
 func TestColorParse(t *testing.T) {
 	tests := []struct {
-		text string
+		text    string
 		r, g, b int
-		a float64
+		a       float64
 	}{
 		{"#000000", 0, 0, 0, 1.0},
 		{"#ffffff", 255, 255, 255, 1.0},
@@ -356,7 +356,7 @@ func TestColorLighten(t *testing.T) {
 
 func TestRGBToLab(t *testing.T) {
 	data := []struct {
-		r, g, b    int
+		r, g, b  int
 		L, a, b_ float64
 	}{
 		{10, 23, 73, 10.245, 15.913, -32.672},
@@ -381,7 +381,7 @@ func TestRGBToLab(t *testing.T) {
 
 func TestLabToRGB(t *testing.T) {
 	data := []struct {
-		r, g, b    int
+		r, g, b  int
 		L, a, b_ float64
 	}{
 		{10, 23, 73, 10.245, 15.913, -32.672},

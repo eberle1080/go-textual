@@ -23,7 +23,7 @@ type styleKey = rich.Style
 // lazily initialised on first use.
 type Strip struct {
 	segments   rich.Segments
-	cellLength int     // -1 means not yet computed
+	cellLength int // -1 means not yet computed
 	cropCache  *cache.FIFOCache[cropKey, Strip]
 	styleCache *cache.FIFOCache[styleKey, Strip]
 }
@@ -401,4 +401,3 @@ func cropSegments(segs rich.Segments, start, end int) rich.Segments {
 	}
 	return result
 }
-

@@ -18,14 +18,14 @@ func newHeadlessDriver(sink driver.EventSink, width, height int) *headlessDriver
 	return &headlessDriver{sink: sink, width: width, height: height}
 }
 
-func (d *headlessDriver) Write(data string)   { d.output = append(d.output, data) }
-func (d *headlessDriver) Flush()              {}
-func (d *headlessDriver) Close()              {}
-func (d *headlessDriver) IsHeadless() bool    { return true }
-func (d *headlessDriver) IsInline() bool      { return false }
-func (d *headlessDriver) CanSuspend() bool    { return false }
-func (d *headlessDriver) SuspendApplicationMode() {}
-func (d *headlessDriver) ResumeApplicationMode()  {}
+func (d *headlessDriver) Write(data string)        { d.output = append(d.output, data) }
+func (d *headlessDriver) Flush()                   {}
+func (d *headlessDriver) Close()                   {}
+func (d *headlessDriver) IsHeadless() bool         { return true }
+func (d *headlessDriver) IsInline() bool           { return false }
+func (d *headlessDriver) CanSuspend() bool         { return false }
+func (d *headlessDriver) SuspendApplicationMode()  {}
+func (d *headlessDriver) ResumeApplicationMode()   {}
 func (d *headlessDriver) OpenURL(_ string)         {}
 func (d *headlessDriver) SetCursorOrigin(_, _ int) {}
 func (d *headlessDriver) ClearCursorOrigin()       {}

@@ -150,10 +150,10 @@ func (d *WindowsDriver) CanSuspend() bool { return false }
 
 func (d *WindowsDriver) SuspendApplicationMode() {}
 func (d *WindowsDriver) ResumeApplicationMode()  {}
-func (d *WindowsDriver) OpenURL(_ string)         {}
+func (d *WindowsDriver) OpenURL(_ string)        {}
 
 func (d *WindowsDriver) SetCursorOrigin(x, y int) { d.base.SetCursorOrigin(x, y) }
-func (d *WindowsDriver) ClearCursorOrigin()        { d.base.ClearCursorOrigin() }
+func (d *WindowsDriver) ClearCursorOrigin()       { d.base.ClearCursorOrigin() }
 
 func (d *WindowsDriver) StartApplicationMode() {
 	stdoutHandle := windows.Handle(os.Stdout.Fd())

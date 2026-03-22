@@ -77,7 +77,7 @@ func (d *UnixDriver) OpenURL(url string) {
 }
 
 func (d *UnixDriver) SetCursorOrigin(x, y int) { d.base.SetCursorOrigin(x, y) }
-func (d *UnixDriver) ClearCursorOrigin()        { d.base.ClearCursorOrigin() }
+func (d *UnixDriver) ClearCursorOrigin()       { d.base.ClearCursorOrigin() }
 
 func (d *UnixDriver) getTerminalSize() (int, int) {
 	w, h, err := term.GetSize(d.fileno)

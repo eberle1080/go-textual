@@ -66,15 +66,15 @@ func (w *arrangeTestWidget) GetContentHeight(container, viewport geometry.Size, 
 	return 1
 }
 
-func (w *arrangeTestWidget) Expand() bool                                              { return true }
-func (w *arrangeTestWidget) Shrink() bool                                              { return true }
-func (w *arrangeTestWidget) SortOrder() int                                            { return w.sortOrd }
-func (w *arrangeTestWidget) AbsoluteOffset() *geometry.Offset                          { return nil }
-func (w *arrangeTestWidget) Layer() string                                             { return "" }
-func (w *arrangeTestWidget) PreLayout(_ Layout)                                        {}
-func (w *arrangeTestWidget) ProcessLayout(ps []WidgetPlacement) []WidgetPlacement      { return ps }
-func (w *arrangeTestWidget) ViewportSize() geometry.Size  { return geometry.Size{Width: 80, Height: 24} }
-func (w *arrangeTestWidget) AppSize() geometry.Size       { return geometry.Size{Width: 80, Height: 24} }
+func (w *arrangeTestWidget) Expand() bool                                         { return true }
+func (w *arrangeTestWidget) Shrink() bool                                         { return true }
+func (w *arrangeTestWidget) SortOrder() int                                       { return w.sortOrd }
+func (w *arrangeTestWidget) AbsoluteOffset() *geometry.Offset                     { return nil }
+func (w *arrangeTestWidget) Layer() string                                        { return "" }
+func (w *arrangeTestWidget) PreLayout(_ Layout)                                   {}
+func (w *arrangeTestWidget) ProcessLayout(ps []WidgetPlacement) []WidgetPlacement { return ps }
+func (w *arrangeTestWidget) ViewportSize() geometry.Size                          { return geometry.Size{Width: 80, Height: 24} }
+func (w *arrangeTestWidget) AppSize() geometry.Size                               { return geometry.Size{Width: 80, Height: 24} }
 func (w *arrangeTestWidget) ScrollableContentRegion() geometry.Region {
 	return geometry.Region{Width: 80, Height: 24}
 }
@@ -279,10 +279,10 @@ func TestArrange_GridAutoTracks_OuterBox(t *testing.T) {
 	})
 
 	c1 := newArrangeWidget("C1")
-	c1.fixedWidth = 20  // intrinsic content width
-	c1.fixedHeight = 5  // intrinsic content height
-	c1.boxWidth = 22    // outer box = content + 2 border columns
-	c1.boxHeight = 7    // outer box = content + 2 border rows
+	c1.fixedWidth = 20 // intrinsic content width
+	c1.fixedHeight = 5 // intrinsic content height
+	c1.boxWidth = 22   // outer box = content + 2 border columns
+	c1.boxHeight = 7   // outer box = content + 2 border rows
 
 	size := geometry.Size{Width: 80, Height: 24}
 	result := Arrange(parent, []Layoutable{c1}, size, size, false)

@@ -160,9 +160,9 @@ func TestOffsetDistanceTo(t *testing.T) {
 
 func TestOffsetClamp(t *testing.T) {
 	tests := []struct {
-		in          Offset
+		in            Offset
 		width, height int
-		want        Offset
+		want          Offset
 	}{
 		{Offset{1, 2}, 3, 3, Offset{1, 2}},
 		{Offset{3, 2}, 3, 3, Offset{2, 2}},
@@ -191,8 +191,13 @@ func TestSizeContains(t *testing.T) {
 		x, y int
 		want bool
 	}{
-		{5, 5, true}, {9, 9, true}, {0, 0, true},
-		{10, 9, false}, {9, 10, false}, {-1, 0, false}, {0, -1, false},
+		{5, 5, true},
+		{9, 9, true},
+		{0, 0, true},
+		{10, 9, false},
+		{9, 10, false},
+		{-1, 0, false},
+		{0, -1, false},
 	}
 	for _, tt := range tests {
 		if got := s.Contains(tt.x, tt.y); got != tt.want {

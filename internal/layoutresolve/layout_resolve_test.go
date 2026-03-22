@@ -47,9 +47,9 @@ func TestResolve_FractionalEqual(t *testing.T) {
 
 func TestResolve_Mixed(t *testing.T) {
 	edges := []Edge{
-		testEdge{size: intPtr(20)},  // fixed
-		testEdge{fraction: 1},       // gets remaining / 2
-		testEdge{fraction: 1},       // gets remaining / 2
+		testEdge{size: intPtr(20)}, // fixed
+		testEdge{fraction: 1},      // gets remaining / 2
+		testEdge{fraction: 1},      // gets remaining / 2
 	}
 	result := Resolve(100, edges)
 	if result[0] != 20 {

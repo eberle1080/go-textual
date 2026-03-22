@@ -67,7 +67,12 @@ func translateMouseMsg(m msg.Msg, w widget.Widget) msg.Msg {
 // mouseScreenXY extracts the screen-space integer coordinates from any mouse
 // message. Returns (0, 0, false) if m is not a mouse message.
 func mouseScreenXY(m msg.Msg) (x, y int, ok bool) {
-	type screener interface{ ScreenOffset() interface{ X(); Y() } }
+	type screener interface {
+		ScreenOffset() interface {
+			X()
+			Y()
+		}
+	}
 	switch ev := m.(type) {
 	case msg.MouseDownMsg:
 		return int(ev.ScreenX), int(ev.ScreenY), true

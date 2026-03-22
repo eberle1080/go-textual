@@ -63,10 +63,10 @@ const (
 	ControlShift9 = "ctrl+shift+9"
 	ControlShift0 = "ctrl+shift+0"
 
-	ControlBackslash    = "ctrl+backslash"
-	ControlSquareClose  = "ctrl+right_square_bracket"
-	ControlCircumflex   = "ctrl+circumflex_accent"
-	ControlUnderscore   = "ctrl+underscore"
+	ControlBackslash   = "ctrl+backslash"
+	ControlSquareClose = "ctrl+right_square_bracket"
+	ControlCircumflex  = "ctrl+circumflex_accent"
+	ControlUnderscore  = "ctrl+underscore"
 )
 
 // Arrow and navigation keys.
@@ -185,10 +185,10 @@ const (
 
 // Special keys.
 const (
-	Any       = "<any>"
-	ScrollUp  = "<scroll-up>"
+	Any        = "<any>"
+	ScrollUp   = "<scroll-up>"
 	ScrollDown = "<scroll-down>"
-	Ignore    = "<ignore>"
+	Ignore     = "<ignore>"
 
 	// Aliases for common keys.
 	ControlSpace = "ctrl-at"
@@ -256,11 +256,11 @@ var KeyToUnicodeName = map[string]string{
 
 // KeyAliases maps keys to their alternative names.
 var KeyAliases = map[string][]string{
-	"tab":    {"ctrl+i"},
-	"enter":  {"ctrl+m"},
-	"escape": {"ctrl+left_square_brace"},
+	"tab":     {"ctrl+i"},
+	"enter":   {"ctrl+m"},
+	"escape":  {"ctrl+left_square_brace"},
 	"ctrl+at": {"ctrl+space"},
-	"ctrl+j": {"newline"},
+	"ctrl+j":  {"newline"},
 }
 
 // KeyDisplayAliases maps key names to their display representations.

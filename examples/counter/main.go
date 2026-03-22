@@ -23,7 +23,7 @@ import (
 
 type CounterScreen struct {
 	screen.BaseScreen
-	count     int
+	count      int
 	countLabel *widgets.Label
 	helpLabel  *widgets.Label
 	incBtn     *widgets.Button

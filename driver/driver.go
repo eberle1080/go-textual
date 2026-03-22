@@ -66,13 +66,13 @@ func WithSize(w, h int) DriverOption {
 
 // BaseDriver holds state shared by all platform driver implementations.
 type BaseDriver struct {
-	sink        EventSink
-	debug       bool
-	mouse       bool
-	size        *[2]int
-	downButtons []msg.MouseButton
-	lastMoveX   float64
-	lastMoveY   float64
+	sink         EventSink
+	debug        bool
+	mouse        bool
+	size         *[2]int
+	downButtons  []msg.MouseButton
+	lastMoveX    float64
+	lastMoveY    float64
 	cursorOrigin *geometry.Offset
 }
 

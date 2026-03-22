@@ -2,25 +2,25 @@ package css
 
 // Pattern constants used to build tokenizer Expect objects.
 const (
-	PatternPercent         = `-?\d+\.?\d*%`
-	PatternDecimal         = `-?\d+\.?\d*`
-	PatternComma           = `\s*,\s*`
-	PatternOpenBrace       = `\(\s*`
-	PatternCloseBrace      = `\s*\)`
-	PatternHexColor        = `\#[0-9a-fA-F]{8}|\#[0-9a-fA-F]{6}|\#[0-9a-fA-F]{4}|\#[0-9a-fA-F]{3}`
-	PatternRGBColor        = `rgb\(\s*` + PatternDecimal + `\s*,\s*` + PatternDecimal + `\s*,\s*` + PatternDecimal + `\s*\)|rgba\(\s*` + PatternDecimal + `\s*,\s*` + PatternDecimal + `\s*,\s*` + PatternDecimal + `\s*,\s*` + PatternDecimal + `\s*\)`
-	PatternHSLColor        = `hsl\(\s*` + PatternDecimal + `\s*,\s*` + PatternPercent + `\s*,\s*` + PatternPercent + `\s*\)|hsla\(\s*` + PatternDecimal + `\s*,\s*` + PatternPercent + `\s*,\s*` + PatternPercent + `\s*,\s*` + PatternDecimal + `\s*\)`
-	PatternScalar          = PatternDecimal + `(?:fr|%|w|h|vw|vh)`
-	PatternDuration        = `\d+\.?\d*(?:ms|s)`
-	PatternNumber          = `\-?\d+\.?\d*`
-	PatternColor           = PatternHexColor + `|` + PatternRGBColor + `|` + PatternHSLColor
-	PatternKeyValue        = `[a-zA-Z_-][a-zA-Z0-9_-]*=[0-9a-zA-Z_\-\/]+`
-	PatternToken           = `[a-zA-Z_][a-zA-Z0-9_-]*`
-	PatternString          = `".*?"`
-	PatternVariableRef     = `\$[a-zA-Z0-9_\-]+`
-	PatternIdentifier      = `[a-zA-Z_\-][a-zA-Z0-9_\-]*`
+	PatternPercent          = `-?\d+\.?\d*%`
+	PatternDecimal          = `-?\d+\.?\d*`
+	PatternComma            = `\s*,\s*`
+	PatternOpenBrace        = `\(\s*`
+	PatternCloseBrace       = `\s*\)`
+	PatternHexColor         = `\#[0-9a-fA-F]{8}|\#[0-9a-fA-F]{6}|\#[0-9a-fA-F]{4}|\#[0-9a-fA-F]{3}`
+	PatternRGBColor         = `rgb\(\s*` + PatternDecimal + `\s*,\s*` + PatternDecimal + `\s*,\s*` + PatternDecimal + `\s*\)|rgba\(\s*` + PatternDecimal + `\s*,\s*` + PatternDecimal + `\s*,\s*` + PatternDecimal + `\s*,\s*` + PatternDecimal + `\s*\)`
+	PatternHSLColor         = `hsl\(\s*` + PatternDecimal + `\s*,\s*` + PatternPercent + `\s*,\s*` + PatternPercent + `\s*\)|hsla\(\s*` + PatternDecimal + `\s*,\s*` + PatternPercent + `\s*,\s*` + PatternPercent + `\s*,\s*` + PatternDecimal + `\s*\)`
+	PatternScalar           = PatternDecimal + `(?:fr|%|w|h|vw|vh)`
+	PatternDuration         = `\d+\.?\d*(?:ms|s)`
+	PatternNumber           = `\-?\d+\.?\d*`
+	PatternColor            = PatternHexColor + `|` + PatternRGBColor + `|` + PatternHSLColor
+	PatternKeyValue         = `[a-zA-Z_-][a-zA-Z0-9_-]*=[0-9a-zA-Z_\-\/]+`
+	PatternToken            = `[a-zA-Z_][a-zA-Z0-9_-]*`
+	PatternString           = `".*?"`
+	PatternVariableRef      = `\$[a-zA-Z0-9_\-]+`
+	PatternIdentifier       = `[a-zA-Z_\-][a-zA-Z0-9_\-]*`
 	PatternSelectorTypeName = `[A-Z_][a-zA-Z0-9_]*`
-	PatternDeclarationName = `[a-z][a-zA-Z0-9_\-]*`
+	PatternDeclarationName  = `[a-z][a-zA-Z0-9_\-]*`
 )
 
 // declarationValues is the ordered set of token patterns valid inside a declaration.
@@ -37,15 +37,15 @@ var declarationValues = [][2]string{
 
 // Package-level Expect variables for the tokenizer state machine.
 var (
-	ExpectRootScope = buildRootScope()
-	ExpectRootNested = buildRootNested()
+	ExpectRootScope            = buildRootScope()
+	ExpectRootNested           = buildRootNested()
 	ExpectVariableNameContinue = buildVariableNameContinue()
-	ExpectCommentEnd = NewExpect("comment end", [][2]string{
+	ExpectCommentEnd           = NewExpect("comment end", [][2]string{
 		{"comment_end", `\*/`},
 	})
-	ExpectSelectorContinue = buildSelectorContinue()
-	ExpectDeclaration      = buildDeclaration()
-	ExpectDeclarationSolo  = buildDeclarationSolo()
+	ExpectSelectorContinue       = buildSelectorContinue()
+	ExpectDeclaration            = buildDeclaration()
+	ExpectDeclarationSolo        = buildDeclarationSolo()
 	ExpectDeclarationContent     = buildDeclarationContent()
 	ExpectDeclarationContentSolo = buildDeclarationContentSolo()
 )
@@ -203,20 +203,20 @@ func TokenizeValues(values map[string]string) (map[string][]Token, error) {
 func tcssTokenize(code string, readFrom CSSLocation) ([]Token, error) {
 	tokenizer := NewTokenizer(code, readFrom)
 	stateMap := map[string]*Expect{
-		"variable_name":             ExpectVariableNameContinue,
-		"variable_value_end":        ExpectRootScope,
-		"selector_start":            ExpectSelectorContinue,
-		"selector_start_id":         ExpectSelectorContinue,
-		"selector_start_class":      ExpectSelectorContinue,
-		"selector_start_universal":  ExpectSelectorContinue,
-		"selector_id":               ExpectSelectorContinue,
-		"selector_class":            ExpectSelectorContinue,
-		"selector_universal":        ExpectSelectorContinue,
-		"declaration_set_start":     ExpectDeclaration,
-		"declaration_name":          ExpectDeclarationContent,
-		"declaration_end":           ExpectDeclaration,
-		"declaration_set_end":       ExpectRootNested,
-		"nested":                    ExpectSelectorContinue,
+		"variable_name":            ExpectVariableNameContinue,
+		"variable_value_end":       ExpectRootScope,
+		"selector_start":           ExpectSelectorContinue,
+		"selector_start_id":        ExpectSelectorContinue,
+		"selector_start_class":     ExpectSelectorContinue,
+		"selector_start_universal": ExpectSelectorContinue,
+		"selector_id":              ExpectSelectorContinue,
+		"selector_class":           ExpectSelectorContinue,
+		"selector_universal":       ExpectSelectorContinue,
+		"declaration_set_start":    ExpectDeclaration,
+		"declaration_name":         ExpectDeclarationContent,
+		"declaration_end":          ExpectDeclaration,
+		"declaration_set_end":      ExpectRootNested,
+		"nested":                   ExpectSelectorContinue,
 	}
 
 	expect := ExpectRootScope

@@ -12,8 +12,10 @@ type mockWidget struct {
 	display bool
 }
 
-func (m *mockWidget) Styles() *css.RenderStyles { return css.NewRenderStyles(css.NewStyles(), css.NewStyles()) }
-func (m *mockWidget) Display() bool             { return m.display }
+func (m *mockWidget) Styles() *css.RenderStyles {
+	return css.NewRenderStyles(css.NewStyles(), css.NewStyles())
+}
+func (m *mockWidget) Display() bool { return m.display }
 
 func TestResolve_ExplicitCells(t *testing.T) {
 	dims := []css.Scalar{

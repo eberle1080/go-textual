@@ -92,8 +92,8 @@ func TestKeyToCharacter(t *testing.T) {
 		{"a", "a", true},
 		{"z", "z", true},
 		{"1", "1", true},
-		{"ctrl+a", "", false},    // modifier — no char
-		{"shift+a", "", false},   // modifier — no char
+		{"ctrl+a", "", false},  // modifier — no char
+		{"shift+a", "", false}, // modifier — no char
 		{"exclamation_mark", "!", true},
 		{"question_mark", "?", true},
 		// Parity cases from textual/tests/test_keys.py
@@ -187,8 +187,8 @@ func TestKeyToCharacterMultibyte(t *testing.T) {
 		char string
 		ok   bool
 	}{
-		{"£", "£", true},  // U+00A3 POUND SIGN — 2 bytes in UTF-8
-		{"€", "€", true},  // U+20AC EURO SIGN — 3 bytes in UTF-8
+		{"£", "£", true}, // U+00A3 POUND SIGN — 2 bytes in UTF-8
+		{"€", "€", true}, // U+20AC EURO SIGN — 3 bytes in UTF-8
 	}
 	for _, tt := range tests {
 		got, ok := KeyToCharacter(tt.key)

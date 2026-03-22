@@ -18,11 +18,11 @@ func NewNodeList() *NodeList {
 	}
 }
 
-func (nl *NodeList) Len() int              { return len(nl.nodes) }
-func (nl *NodeList) Get(i int) Node        { return nl.nodes[i] }
+func (nl *NodeList) Len() int                { return len(nl.nodes) }
+func (nl *NodeList) Get(i int) Node          { return nl.nodes[i] }
 func (nl *NodeList) Contains(node Node) bool { return nl.set[node] }
 func (nl *NodeList) GetByID(id string) Node  { return nl.byID[id] }
-func (nl *NodeList) Updates() int          { return nl.updates }
+func (nl *NodeList) Updates() int            { return nl.updates }
 
 func (nl *NodeList) Append(node Node) {
 	if nl.set[node] {
