@@ -1097,6 +1097,7 @@ func (s *Styles) AutoLinkColor() bool    { return s.boolRule("auto_link_color", 
 func (s *Styles) LinkBackground() color.Color {
 	return s.colorRule("link_background", color.Transparent)
 }
+
 func (s *Styles) LinkColorHover() color.Color {
 	return s.colorRule("link_color_hover", color.Transparent)
 }
@@ -1109,15 +1110,19 @@ func (s *Styles) AutoBorderTitleColor() bool { return s.boolRule("auto_border_ti
 func (s *Styles) BorderTitleColor() color.Color {
 	return s.colorRule("border_title_color", color.NewWithAlpha(255, 255, 255, 0))
 }
+
 func (s *Styles) BorderTitleBackground() color.Color {
 	return s.colorRule("border_title_background", color.Transparent)
 }
+
 func (s *Styles) AutoBorderSubtitleColor() bool {
 	return s.boolRule("auto_border_subtitle_color", false)
 }
+
 func (s *Styles) BorderSubtitleColor() color.Color {
 	return s.colorRule("border_subtitle_color", color.NewWithAlpha(255, 255, 255, 0))
 }
+
 func (s *Styles) BorderSubtitleBackground() color.Color {
 	return s.colorRule("border_subtitle_background", color.Transparent)
 }
@@ -1320,6 +1325,7 @@ func (s *Styles) SetScrollbarBackground(v color.Color)     { s.Rules["scrollbar_
 func (s *Styles) SetScrollbarBackgroundHover(v color.Color) {
 	s.Rules["scrollbar_background_hover"] = v
 }
+
 func (s *Styles) SetScrollbarBackgroundActive(v color.Color) {
 	s.Rules["scrollbar_background_active"] = v
 }
