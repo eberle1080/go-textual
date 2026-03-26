@@ -58,6 +58,15 @@ func (r *RichLog) WriteStyled(line string, style rich.Style) {
 	r.MarkDirty()
 }
 
+// Lines returns a copy of all retained plain-text lines, oldest first.
+func (r *RichLog) Lines() []string {
+	out := make([]string, len(r.lines))
+	for i, l := range r.lines {
+		out[i] = l.text
+	}
+	return out
+}
+
 // Clear removes all lines.
 func (r *RichLog) Clear() {
 	r.lines = r.lines[:0]
